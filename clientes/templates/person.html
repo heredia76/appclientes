@@ -1,27 +1,37 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Lista de Pessoas</title>
-</head>
-<body>
-	<ul>
-		{% for person in persons %}
+{% extends 'base.html' %}
 
-			<li>
-				<a href="{% url 'persons_update' person.id %}"> {{ person.first_name }}</a>
-				<a href="{% url 'persons_delete' person.id %}"> Deletar </a>
-			</li>
+{% block title %} Seja Bem Vindo {% endblock %}
+{% block main %}
 
-		{% endfor %}
-	</ul>
+	<div class="row">
+		<div class="col">
 
-	<br>
+		</div>
 
-	<a href="{% url 'person_new' %}">Novo Cliente</a>
+		<div class="col-6">
+			<h3>Lista de Clientes</h3>
+			<ul class="list-group">
+				{% for person in persons %}
+					<li class="list-group-item">
+						<a href="{% url 'persons_update' person.id %}">{{ person.first_name }}</a>
+						<a href="{% url 'persons_delete' person.id %}" class="trash-item">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+			<br>
+			<a href="{% url 'person_new' %}" class="btn btn-primary" >Novo Cliente</a>
 
-</body>
-</html>
+		</div>
+
+		<div class="col">
+			{% if user.is_authenticated %}
+				<p>Ola {{ user.username }}</p>
+			{% endif %}
+		</div>
+	</div>
+
+
+
+{% endblock %}

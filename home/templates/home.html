@@ -1,16 +1,30 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-</head>
-<body>
-	<h1>Seja Bem Vindo!</h1>
-	{% if user.is_authenticated %}
-		<p>Ola {{ user.username }}</p>
-	{% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %} Seja Bem Vindo {% endblock %}
+
+{% block main %}
+
+	<div class="row">
+		<div class="col-sm">
+
+		</div>
+		<div class="col-6">
+		    <h1>Seja Bem Vindo!</h1>
+		</div>
+		<div class="col-sm">
+			{% if user.is_authenticated %}
+				<p>Ola {{ user.username }}</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block footer %}
+	<footer class="footer mt-auto py-3">
+	  <div class="container">
+	    <span class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conteúdo desenvolvido com Django2.x</font></font></span>
+	  </div>
+	</footer>
+{% endblock %}
+
+
