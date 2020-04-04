@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Person
 from .forms import PersonForm
+
+
 #  Aqui lista as pessoas
 def persons_list(request):
     persons = Person.objects.all()
